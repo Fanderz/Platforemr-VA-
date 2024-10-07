@@ -8,7 +8,6 @@ public class Fighter : MonoBehaviour
     [SerializeField] private float _attackDelay;
 
     private bool _isFighting = false;
-    private bool _isVampire = false;
 
     private WaitForSeconds _wait;
     private Coroutine _fightingCoroutine;
@@ -24,11 +23,8 @@ public class Fighter : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Fighter enemy))
         {
-            if (collision.collider is CapsuleCollider2D)
-            { 
-                _isFighting = true;
-                _fightingCoroutine = StartCoroutine(Attack(enemy));
-            }
+            _isFighting = true;
+            _fightingCoroutine = StartCoroutine(Attack(enemy));
         }
     }
 

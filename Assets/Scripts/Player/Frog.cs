@@ -10,12 +10,10 @@ public class Frog : MonoBehaviour
 
     private GroundDetector _groundDetector;
     private InputReader _inputReader;
-    private VampireAbility _vampire;
 
     public event Action<bool, float> OnAnimatorParameterChange;
     public event Action<float> OnFrogMove;
     public event Action OnFrogJump;
-    public event Action OnFrogVampire;
 
     private void Awake()
     {
@@ -23,7 +21,6 @@ public class Frog : MonoBehaviour
         _healer.Healing += _health.IncreaseHealth;
         _groundDetector = GetComponentInChildren<GroundDetector>();
         _inputReader = GetComponentInChildren<InputReader>();
-        _vampire = GetComponentInChildren<VampireAbility>();
     }
 
     private void FixedUpdate()
@@ -33,9 +30,6 @@ public class Frog : MonoBehaviour
 
         if (_inputReader.GetIsJump() && _groundDetector.IsGround)
             OnFrogJump?.Invoke();
-
-        if (_inputReader.GetIsVampire())
-            OnFrogVampire?.Invoke();
 
         if (_health.Value <= 0)
             SceneManager.LoadScene("SampleScene");
