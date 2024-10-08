@@ -11,14 +11,14 @@ public class Frog : MonoBehaviour
     private GroundDetector _groundDetector;
     private InputReader _inputReader;
 
-    public event Action<bool, float> OnAnimatorParameterChange;
-    public event Action<float> OnFrogMove;
-    public event Action OnFrogJump;
+    public event Action<bool, float> AnimatorParameterChanged;
+    public event Action<float> Moving;
+    public event Action Jumping;
 
     private void Awake()
     {
-        _fighter.TakingDamage += _health.DecreaseHealth;
-        _healer.Healing += _health.IncreaseHealth;
+        _fighter.TakingDamage += _health.DecreaseValue;
+        _healer.Healing += _health.IncreaseValue;
         _groundDetector = GetComponentInChildren<GroundDetector>();
         _inputReader = GetComponentInChildren<InputReader>();
     }
@@ -26,10 +26,10 @@ public class Frog : MonoBehaviour
     private void FixedUpdate()
     {
         if (_inputReader.Direction != 0)
-            OnFrogMove?.Invoke(_inputReader.Direction);
+            Moving?.Invoke(_inputReader.Direction);
 
         if (_inputReader.GetIsJump() && _groundDetector.IsGround)
-            OnFrogJump?.Invoke();
+            Jumping?.Invoke();
 
         if (_health.Value <= 0)
             SceneManager.LoadScene("SampleScene");
@@ -37,6 +37,6 @@ public class Frog : MonoBehaviour
 
     private void Update()
     {
-        OnAnimatorParameterChange?.Invoke(!_groundDetector.IsGround, Mathf.Abs(_inputReader.Direction));
+        AnimatorParameterChanged?.Invoke(!_groundDetector.IsGround, Mathf.Abs(_inputReader.Direction));
     }
 }

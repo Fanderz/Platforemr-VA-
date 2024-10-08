@@ -1,38 +1,23 @@
 using System;
-using UnityEngine;
 
-public class Mana : MonoBehaviour
+public class Mana : BaseHealthMana
 {
-    [SerializeField] private float _maxValue;
+    public event Action<float> Changed;
 
-    public float Value { get; private set; }
-
-    public event Action<float> ManaChanged;
-
-    public float MaxValue => _maxValue;
-
-    private void Awake()
+    public override void IncreaseValue(float value)
     {
-        Value = _maxValue;
+        base.IncreaseValue(value);
+
+        Changed?.Invoke(Value);
     }
 
-    internal void IncreaseMana(float value)
-    {
-        if (Value + value <= _maxValue)
-            Value += value;
-        else
-            Value = _maxValue;
-
-        ManaChanged?.Invoke(Value);
-    }
-
-    internal void DecreaseMana(float value)
+    public override void DecreaseValue(float value)
     {
         if (Value - value > 0)
             Value -= value;
         else
             Value = 0;
 
-        ManaChanged?.Invoke(Value);
+        Changed?.Invoke(Value);
     }
 }

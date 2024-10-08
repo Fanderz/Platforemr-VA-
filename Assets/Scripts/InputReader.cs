@@ -6,6 +6,8 @@ public class InputReader : MonoBehaviour
 
     private bool _isJump;
     private bool _isVampire;
+    private KeyCode _jumpCode = KeyCode.W;
+    private KeyCode _vampireCode = KeyCode.F;
 
     public float Direction { get; private set; }
 
@@ -13,10 +15,10 @@ public class InputReader : MonoBehaviour
     {
         Direction = Input.GetAxisRaw(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(_jumpCode))
             _isJump = true;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(_vampireCode))
             _isVampire = true;
     }
 

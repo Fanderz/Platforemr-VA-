@@ -8,7 +8,7 @@ public class ScoreView : MonoBehaviour
 
     private void Awake()
     {
-        _text.text = _score.Score.ToString();
+        _text.text = _score.Value.ToString();
     }
 
     private void OnEnable()

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SmoothManaBar : MonoBehaviour
+public class BaseHealthManaBars : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Mana _health;
+    [SerializeField] private BaseHealthMana _value;
     [SerializeField] private float _changeRate;
 
     private bool _running;
@@ -16,7 +16,7 @@ public class SmoothManaBar : MonoBehaviour
     private void OnEnable()
     {
         _running = true;
-        _coroutine = StartCoroutine(ChangeSmoothManaView());
+        _coroutine = StartCoroutine(ChangeSmoothBarView());
     }
 
     private void OnDisable()
@@ -25,11 +25,11 @@ public class SmoothManaBar : MonoBehaviour
         _running = false;
     }
 
-    private IEnumerator ChangeSmoothManaView()
+    private IEnumerator ChangeSmoothBarView()
     {
         while (_running)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _health.Value / _health.MaxValue, _changeRate * Time.fixedDeltaTime);
+            _slider.value = Mathf.MoveTowards(_slider.value, _value.Value / _value.MaxValue, _changeRate * Time.fixedDeltaTime);
 
             yield return null;
         }

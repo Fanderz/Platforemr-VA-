@@ -13,12 +13,12 @@ public class FrogAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _frog.OnAnimatorParameterChange += ChangeParameter;
+        _frog.AnimatorParameterChanged += ChangeParameter;
     }
 
     private void OnDisable()
     {
-        _frog.OnAnimatorParameterChange -= ChangeParameter;
+        _frog.AnimatorParameterChanged -= ChangeParameter;
     }
 
     private void ChangeParameter(bool isJumping,float moveX)

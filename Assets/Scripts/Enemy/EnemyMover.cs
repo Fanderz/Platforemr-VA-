@@ -25,7 +25,7 @@ public class EnemyMover : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Frog>() != null && _coroutine != null)
+        if (collision.GetComponent<Fighter>() != null && _coroutine != null)
         {
             StopCoroutine(_coroutine);
             _coroutine = null;
@@ -34,13 +34,13 @@ public class EnemyMover : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Frog>() != null)
+        if (collision.GetComponent<Fighter>() != null)
             transform.position = Vector2.Lerp(transform.position, new Vector2(collision.transform.position.x, transform.position.y), _movementSpeed * Time.deltaTime);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Frog>() != null && _coroutine == null && gameObject != null)
+        if (collision.GetComponent<Fighter>() != null && _coroutine == null && gameObject != null)
             _coroutine = StartCoroutine(Move());
     }
 

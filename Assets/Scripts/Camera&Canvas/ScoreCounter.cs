@@ -9,25 +9,25 @@ public class ScoreCounter : MonoBehaviour
 
     public event Action<int> Changed;
 
-    public int Score { get; private set; }
+    public int Value { get; private set; }
 
     private void Awake()
     {
-        Score = 0;
+        Value = 0;
     }
 
     private void OnEnable()
     {
-        _frog.OnIncreaseScore += IncreaseScore;
+        _frog.IncreasingScore += IncreaseScore;
     }
 
     private void OnDisable()
     {
-        _frog.OnIncreaseScore -= IncreaseScore;
+        _frog.IncreasingScore -= IncreaseScore;
     }
 
     private void IncreaseScore()
     {
-        Changed?.Invoke(++Score);
+        Changed?.Invoke(++Value);
     }
 }

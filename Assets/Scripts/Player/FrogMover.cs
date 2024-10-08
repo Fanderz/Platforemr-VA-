@@ -18,14 +18,14 @@ public class FrogMover : MonoBehaviour
 
     private void OnEnable()
     {
-        _frog.OnFrogMove += Move;
-        _frog.OnFrogJump += Jump;
+        _frog.Moving += Move;
+        _frog.Jumping += Jump;
     }
 
     private void OnDisable()
     {
-        _frog.OnFrogMove -= Move;
-        _frog.OnFrogJump -= Jump;
+        _frog.Moving -= Move;
+        _frog.Jumping -= Jump;
     }
 
     private void Move(float direction)

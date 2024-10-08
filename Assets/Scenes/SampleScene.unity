@@ -1071,7 +1071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304193936}
-  - component: {fileID: 304193937}
+  - component: {fileID: 304193938}
   m_Layer: 5
   m_Name: SmoothHealthBar
   m_TagString: Untagged
@@ -1099,7 +1099,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &304193937
+--- !u!114 &304193938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1108,11 +1108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 304193935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb9c55316eabc445a5f044e1cd1bd1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f31f332f0cd6594dadd5bd0aa6500aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 466383904}
-  _health: {fileID: 1475999399}
+  _value: {fileID: 1475999399}
   _changeRate: 0.1
 --- !u!1 &307554853
 GameObject:
@@ -1253,6 +1253,7 @@ Transform:
   m_Children:
   - {fileID: 1339540265}
   - {fileID: 512495921}
+  - {fileID: 1663303737}
   m_Father: {fileID: 1475999392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &337565867
@@ -5625,7 +5626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 770650732}
-  - component: {fileID: 770650733}
+  - component: {fileID: 770650734}
   m_Layer: 0
   m_Name: SmoothHealthBar
   m_TagString: Untagged
@@ -5653,7 +5654,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &770650733
+--- !u!114 &770650734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5662,11 +5663,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 770650731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb9c55316eabc445a5f044e1cd1bd1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f31f332f0cd6594dadd5bd0aa6500aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1165291569}
-  _health: {fileID: 2075953333}
+  _value: {fileID: 2075953333}
   _changeRate: 0.1
 --- !u!1 &808773643
 GameObject:
@@ -6373,7 +6374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130816849}
-  - component: {fileID: 1130816850}
+  - component: {fileID: 1130816851}
   m_Layer: 0
   m_Name: SmoothHealthBar
   m_TagString: Untagged
@@ -6401,7 +6402,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1130816850
+--- !u!114 &1130816851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6410,11 +6411,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130816848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb9c55316eabc445a5f044e1cd1bd1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f31f332f0cd6594dadd5bd0aa6500aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 527444376}
-  _health: {fileID: 741676922}
+  _value: {fileID: 741676922}
   _changeRate: 0.1
 --- !u!1 &1151237436
 GameObject:
@@ -6425,7 +6426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151237437}
-  - component: {fileID: 1151237438}
+  - component: {fileID: 1151237439}
   m_Layer: 0
   m_Name: AidKitSpawner
   m_TagString: Untagged
@@ -6449,7 +6450,7 @@ Transform:
   - {fileID: 1604877261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1151237438
+--- !u!114 &1151237439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6458,10 +6459,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1151237436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd518263b0a1d14090ad57d8965be4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 56a4234bde6b2ff4b8f0f7bbe7913372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6741374676044209761, guid: 29822c255286d4c498bee9d9e632ed3c, type: 3}
+  _prefabs:
+  - {fileID: 6741374676044209761, guid: 29822c255286d4c498bee9d9e632ed3c, type: 3}
   _spawnPoints:
   - {fileID: 1751682145}
   - {fileID: 129838481}
@@ -6690,7 +6692,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c77d5c87fcbbc4f89610ade1899980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthValue: 10
+  _health: {fileID: 1475999399}
+  _mana: {fileID: 1475999403}
+  _inputReader: {fileID: 1475999396}
+  _vampireValueSize: 10
   _manaPrice: 20
   _vampireDelay: 1
 --- !u!1 &1250691971
@@ -7088,7 +7093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1402314719}
-  - component: {fileID: 1402314720}
+  - component: {fileID: 1402314721}
   m_Layer: 5
   m_Name: SmoothManaBar
   m_TagString: Untagged
@@ -7116,7 +7121,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1402314720
+--- !u!114 &1402314721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7125,11 +7130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1402314718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365a252cd58a42643b1887801891146c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f31f332f0cd6594dadd5bd0aa6500aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1784139518}
-  _health: {fileID: 1475999403}
+  _value: {fileID: 1475999403}
   _changeRate: 0.1
 --- !u!1 &1403147364
 GameObject:
@@ -7319,13 +7324,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1475999392}
-  - component: {fileID: 1475999394}
   - component: {fileID: 1475999402}
   - component: {fileID: 1475999396}
   - component: {fileID: 1475999401}
   - component: {fileID: 1475999400}
   - component: {fileID: 1475999399}
-  - component: {fileID: 1475999398}
   - component: {fileID: 1475999403}
   m_Layer: 0
   m_Name: Frog
@@ -7352,41 +7355,6 @@ Transform:
   - {fileID: 1184621250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1475999394
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475999391}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.022113323, y: -0.09847534}
-  m_Size: {x: 0.9668436, y: 1.2027333}
-  m_Direction: 0
 --- !u!114 &1475999396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,18 +7365,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7faec5e666993cb479338e07c6b35891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1475999398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475999391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41aecb26b3947a247b707160823c7684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1475999399
@@ -7438,7 +7394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 1475999399}
   _fighter: {fileID: 512495923}
-  _healer: {fileID: 1475999398}
+  _healer: {fileID: 1663303739}
 --- !u!114 &1475999401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7924,6 +7880,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8146086, y: 18.1329}
   m_EdgeRadius: 0
+--- !u!1 &1663303736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663303737}
+  - component: {fileID: 1663303738}
+  - component: {fileID: 1663303739}
+  m_Layer: 0
+  m_Name: Healer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663303737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663303736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 337565866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1663303738
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663303736}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00087833405, y: -0.01165998}
+  m_Size: {x: 0.19001733, y: 0.2417169}
+  m_Direction: 0
+--- !u!114 &1663303739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663303736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41aecb26b3947a247b707160823c7684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710258766
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,7 +8137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1758226777}
-  - component: {fileID: 1758226778}
+  - component: {fileID: 1758226779}
   m_Layer: 0
   m_Name: FruitsSpawner
   m_TagString: Untagged
@@ -8125,7 +8161,7 @@ Transform:
   - {fileID: 321371088}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1758226778
+--- !u!114 &1758226779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8134,7 +8170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1758226776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e47e89c9d2d0548a6bfb26d92187eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 56a4234bde6b2ff4b8f0f7bbe7913372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs:

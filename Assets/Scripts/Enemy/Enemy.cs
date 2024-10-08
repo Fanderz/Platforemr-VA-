@@ -7,6 +7,6 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _fighter.TakingDamage += _health.DecreaseHealth;
+        _fighter.TakingDamage += _health.DecreaseValue;
     }
 }
