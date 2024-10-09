@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class BaseHealthManaBars : MonoBehaviour
+public class BaseBars : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private BaseHealthMana _value;
+    [SerializeField] private BaseHeroPoints _value;
     [SerializeField] private float _changeRate;
 
     private bool _running;

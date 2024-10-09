@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 89326442}
   - component: {fileID: 89326444}
   m_Layer: 0
-  m_Name: DeadWall
+  m_Name: DeadlyAbyssLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,16 +18,18 @@ public class ScoreCounter : MonoBehaviour
 
     private void OnEnable()
     {
-        _frog.IncreasingScore += IncreaseScore;
+        _frog.ScoreIncreased += OnScoreIncreased;
     }
 
     private void OnDisable()
     {
-        _frog.IncreasingScore -= IncreaseScore;
+        _frog.ScoreIncreased -= OnScoreIncreased;
     }
 
-    private void IncreaseScore()
+    private void OnScoreIncreased()
     {
-        Changed?.Invoke(++Value);
+        Value++;
+
+        Changed?.Invoke(Value);
     }
 }

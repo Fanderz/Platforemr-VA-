@@ -7,12 +7,12 @@ public class Fighter : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private float _attackDelay;
 
-    private bool _isFighting = false;
-
     private WaitForSeconds _wait;
     private Coroutine _fightingCoroutine;
 
     public event Action<float> TakingDamage;
+    
+    public bool IsFighting { get; private set; }
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Fighter : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Fighter enemy))
         {
-            _isFighting = true;
+            IsFighting = true;
             _fightingCoroutine = StartCoroutine(Attack(enemy));
         }
     }
@@ -32,7 +32,7 @@ public class Fighter : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Fighter enemy))
         {
-            _isFighting = false;
+            IsFighting = false;
 
             if (_fightingCoroutine != null)
                 StopCoroutine(_fightingCoroutine);
@@ -44,7 +44,7 @@ public class Fighter : MonoBehaviour
 
     private IEnumerator Attack(Fighter enemy)
     {
-        while (_isFighting)
+        while (IsFighting)
         {
             enemy.TakeDamage(_damage);
 

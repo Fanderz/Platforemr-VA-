@@ -1,20 +1,10 @@
 using System;
 
-public class Health : BaseHealthMana
+public class Health : BaseHeroPoints
 {
-    public event Action<float> Changed;
-
-    public override void IncreaseValue(float value)
+    private void FixedUpdate()
     {
-        base.IncreaseValue(value);
-
-        Changed?.Invoke(Value);
-    }
-
-    public override void DecreaseValue(float value)
-    {
-        base.DecreaseValue(value);
-
-        Changed?.Invoke(Value);
+        if (Value == 0)
+            Destroy(gameObject);
     }
 }

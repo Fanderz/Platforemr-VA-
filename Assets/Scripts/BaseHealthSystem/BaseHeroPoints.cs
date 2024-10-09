@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
-public class BaseHealthMana : MonoBehaviour
+public class BaseHeroPoints : MonoBehaviour
 {
     [SerializeField] private float _maxValue;
 
     public float Value { get; protected set; }
+
+    public virtual event Action<float> Changed;
 
     public float MaxValue => _maxValue;
 
@@ -19,6 +22,8 @@ public class BaseHealthMana : MonoBehaviour
             Value += value;
         else
             Value = _maxValue;
+
+        Changed?.Invoke(Value);
     }
 
     public virtual void DecreaseValue(float value)
@@ -26,6 +31,8 @@ public class BaseHealthMana : MonoBehaviour
         if (Value - value > 0)
             Value -= value;
         else
-            Destroy(gameObject);
+            Value = 0;
+
+        Changed?.Invoke(Value);
     }
 }

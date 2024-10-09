@@ -3,7 +3,7 @@ using System;
 
 public class FrogEatingFruit : MonoBehaviour
 {
-    public event Action IncreasingScore;
+    public event Action ScoreIncreased;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,5 +12,5 @@ public class FrogEatingFruit : MonoBehaviour
     }
 
     private void EatFruit() =>
-        IncreasingScore?.Invoke();
+        ScoreIncreased?.Invoke();
 }
