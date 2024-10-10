@@ -6,13 +6,16 @@ public class VampireAbility : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private Mana _mana;
     [SerializeField] private InputReader _inputReader;
+    [SerializeField] private LayerMask _enemiesLayer;
+
     [SerializeField] private float _vampireValueSize;
     [SerializeField] private float _manaPrice;
     [SerializeField] private float _vampireDelay;
 
     private bool _isVampire = false;
-    private Fighter _enemy;
+
     private Health _enemyHealth;
+    private SpriteRenderer _spriteView;
 
     private WaitForSeconds _wait;
     private Coroutine _coroutine;
@@ -20,36 +23,43 @@ public class VampireAbility : MonoBehaviour
     private void Awake()
     {
         _wait = new WaitForSeconds(_vampireDelay);
+        _spriteView = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (_inputReader.GetIsVampire() && _mana.Value == _mana.MaxValue)
-        {
-            if (collision.GetComponentInChildren<Fighter>() != null)
-            {
-                _enemy = collision.GetComponentInChildren<Fighter>();
-                _enemyHealth = collision.GetComponent<Health>();
+        var enemy = Physics2D.OverlapCircle(transform.position, transform.GetComponent<CircleCollider2D>().radius, _enemiesLayer);
 
-                _isVampire = true;
-                _coroutine = StartCoroutine(SuckHealth(_enemy));
+        if (enemy != null)
+        {
+            _spriteView.enabled = true;
+
+            if (_inputReader.GetIsVampire())
+            {
+                if (_mana.Value == _mana.MaxValue)
+                {
+                    if (_coroutine != null)
+                        StopCoroutine(_coroutine);
+
+                    _enemyHealth = enemy.GetComponentInParent<Health>();
+
+                    _isVampire = true;
+                    _coroutine = StartCoroutine(SuckHealth(enemy.GetComponent<Fighter>()));
+                }
+                else
+                {
+                    if (_coroutine != null)
+                        StopCoroutine(_coroutine);
+
+                    _coroutine = StartCoroutine(ReloadMana());
+                }
             }
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (_isVampire)
+        else
         {
-            if (_enemy != null && collision.GetComponent<Fighter>() == _enemy)
-            {
-                _isVampire = false;
+            _isVampire = false;
 
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
-
-                _coroutine = StartCoroutine(ReloadMana());
-            }
+            _spriteView.enabled = false;
         }
     }
 
