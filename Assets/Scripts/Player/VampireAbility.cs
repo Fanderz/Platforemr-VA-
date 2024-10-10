@@ -11,6 +11,8 @@ public class VampireAbility : MonoBehaviour
     [SerializeField] private float _vampireDelay;
 
     private bool _isVampire = false;
+    private Fighter _enemy;
+    private Health _enemyHealth;
 
     private WaitForSeconds _wait;
     private Coroutine _coroutine;
@@ -22,28 +24,32 @@ public class VampireAbility : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponentInChildren<Fighter>() != null)
+        if (_inputReader.GetIsVampire() && _mana.Value == _mana.MaxValue)
         {
-            if (_inputReader.GetIsVampire() && _mana.Value == _mana.MaxValue)
+            if (collision.GetComponentInChildren<Fighter>() != null)
             {
-                var enemy = collision.GetComponentInChildren<Fighter>();
+                _enemy = collision.GetComponentInChildren<Fighter>();
+                _enemyHealth = collision.GetComponent<Health>();
 
                 _isVampire = true;
-                _coroutine = StartCoroutine(SuckHealth(enemy));
+                _coroutine = StartCoroutine(SuckHealth(_enemy));
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Fighter enemy))
+        if (_isVampire)
         {
-            _isVampire = false;
+            if (_enemy != null && collision.GetComponent<Fighter>() == _enemy)
+            {
+                _isVampire = false;
 
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
+                if (_coroutine != null)
+                    StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(ReloadMana());
+                _coroutine = StartCoroutine(ReloadMana());
+            }
         }
     }
 
@@ -51,8 +57,17 @@ public class VampireAbility : MonoBehaviour
     {
         while (_isVampire && _mana.Value > 0)
         {
-            enemy.TakeDamage(_vampireValueSize);
-            _health.IncreaseValue(_vampireValueSize);
+            if (_enemyHealth.Value >= _vampireValueSize)
+            {
+                enemy.TakeDamage(_vampireValueSize);
+                _health.IncreaseValue(_vampireValueSize);
+            }
+            else
+            {
+                enemy.TakeDamage(_enemyHealth.Value);
+                _health.IncreaseValue(_enemyHealth.Value);
+            }
+
             _mana.DecreaseValue(_manaPrice);
 
             yield return _wait;
@@ -73,7 +88,7 @@ public class VampireAbility : MonoBehaviour
             yield return _wait;
         }
 
-        if(_coroutine != null)
+        if (_coroutine != null)
             StopCoroutine(_coroutine);
     }
 }

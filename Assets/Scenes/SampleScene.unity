@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 212152569}
   - component: {fileID: 212152570}
   - component: {fileID: 212152571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DogView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 269080440}
   - component: {fileID: 269080439}
   - component: {fileID: 269080438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,7 +1123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307554854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 369424533}
   - component: {fileID: 369424534}
   - component: {fileID: 369424535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2003,7 +2003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 527444375}
   - component: {fileID: 527444376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2093,7 +2093,7 @@ GameObject:
   - component: {fileID: 561586516}
   - component: {fileID: 561586518}
   - component: {fileID: 561586517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5294,7 +5294,7 @@ GameObject:
   - component: {fileID: 741676921}
   - component: {fileID: 741676920}
   - component: {fileID: 741676922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DogEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5627,7 +5627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770650732}
   - component: {fileID: 770650734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmoothHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5711,7 +5711,7 @@ GameObject:
   - component: {fileID: 810790986}
   - component: {fileID: 810790987}
   - component: {fileID: 810790988}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DogView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6201,7 +6201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050670305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6301,7 +6301,7 @@ GameObject:
   - component: {fileID: 1126432062}
   - component: {fileID: 1126432064}
   - component: {fileID: 1126432063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6375,7 +6375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130816849}
   - component: {fileID: 1130816851}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmoothHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6480,7 +6480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1165291568}
   - component: {fileID: 1165291569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7694,7 +7694,7 @@ GameObject:
   - component: {fileID: 1626553914}
   - component: {fileID: 1626553916}
   - component: {fileID: 1626553915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8033,7 +8033,7 @@ GameObject:
   - component: {fileID: 1738878775}
   - component: {fileID: 1738878777}
   - component: {fileID: 1738878776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8318,7 +8318,7 @@ GameObject:
   - component: {fileID: 1813441478}
   - component: {fileID: 1813441477}
   - component: {fileID: 1813441476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8555,7 +8555,7 @@ GameObject:
   - component: {fileID: 1985358559}
   - component: {fileID: 1985358558}
   - component: {fileID: 1985358557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8752,7 +8752,7 @@ GameObject:
   - component: {fileID: 2075953335}
   - component: {fileID: 2075953334}
   - component: {fileID: 2075953333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DogEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

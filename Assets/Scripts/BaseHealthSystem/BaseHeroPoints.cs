@@ -16,22 +16,16 @@ public class BaseHeroPoints : MonoBehaviour
         Value = _maxValue;
     }
 
-    public virtual void IncreaseValue(float value)
+    public void IncreaseValue(float value)
     {
-        if (Value + value <= _maxValue)
-            Value += value;
-        else
-            Value = _maxValue;
+        Value = Mathf.Min(Value + value, _maxValue);
 
         Changed?.Invoke(Value);
     }
 
-    public virtual void DecreaseValue(float value)
+    public void DecreaseValue(float value)
     {
-        if (Value - value > 0)
-            Value -= value;
-        else
-            Value = 0;
+        Value = Mathf.Max(Value - value, 0);
 
         Changed?.Invoke(Value);
     }
