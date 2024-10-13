@@ -6,6 +6,7 @@ public class Fighter : MonoBehaviour
 {
     [SerializeField] private float _damage;
     [SerializeField] private float _attackDelay;
+    [SerializeField] private Health _currentHealth;
 
     private WaitForSeconds _wait;
     private Coroutine _fightingCoroutine;
@@ -13,6 +14,8 @@ public class Fighter : MonoBehaviour
     public event Action<float> TakingDamage;
     
     public bool IsFighting { get; private set; }
+
+    public Health CurrentHealth => _currentHealth;
 
     private void Awake()
     {

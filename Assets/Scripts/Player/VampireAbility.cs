@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System;
 
 public class VampireAbility : MonoBehaviour
 {
@@ -14,7 +16,6 @@ public class VampireAbility : MonoBehaviour
 
     private bool _isVampire = false;
 
-    private Health _enemyHealth;
     private SpriteRenderer _spriteView;
 
     private WaitForSeconds _wait;
@@ -26,67 +27,86 @@ public class VampireAbility : MonoBehaviour
         _spriteView = GetComponent<SpriteRenderer>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Fighter>() != null)
+            _spriteView.enabled = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Fighter>() == null)
+            _spriteView.enabled = false;
+    }
+
     private void FixedUpdate()
     {
-        var enemy = Physics2D.OverlapCircle(transform.position, transform.GetComponent<CircleCollider2D>().radius, _enemiesLayer);
-
-        if (enemy != null)
+        if (_inputReader.GetIsVampire() && _mana.Value == _mana.MaxValue)
         {
-            _spriteView.enabled = true;
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-            if (_inputReader.GetIsVampire())
-            {
-                if (_mana.Value == _mana.MaxValue)
-                {
-                    if (_coroutine != null)
-                        StopCoroutine(_coroutine);
-
-                    _enemyHealth = enemy.GetComponentInParent<Health>();
-
-                    _isVampire = true;
-                    _coroutine = StartCoroutine(SuckHealth(enemy.GetComponent<Fighter>()));
-                }
-                else
-                {
-                    if (_coroutine != null)
-                        StopCoroutine(_coroutine);
-
-                    _coroutine = StartCoroutine(ReloadMana());
-                }
-            }
+            _isVampire = true;
+            _coroutine = StartCoroutine(SuckHealth());
         }
-        else
-        {
-            _isVampire = false;
 
-            _spriteView.enabled = false;
+        if (_mana.Value == 0)
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(ReloadMana());
         }
     }
 
-    private IEnumerator SuckHealth(Fighter enemy)
+    private IEnumerator SuckHealth()
     {
         while (_isVampire && _mana.Value > 0)
         {
-            if (_enemyHealth.Value >= _vampireValueSize)
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, transform.GetComponent<CircleCollider2D>().radius, _enemiesLayer);
+
+            if (enemies.Length != 0)
             {
-                enemy.TakeDamage(_vampireValueSize);
-                _health.IncreaseValue(_vampireValueSize);
+                int nearestIndex = CalculateNearest(enemies);
+
+                if (enemies[nearestIndex].TryGetComponent(out Fighter enemy))
+                {
+                    if (enemy.CurrentHealth.Value >= _vampireValueSize)
+                    {
+                        enemy.TakeDamage(_vampireValueSize);
+                        _health.IncreaseValue(_vampireValueSize);
+                    }
+                    else
+                    {
+                        enemy.TakeDamage(enemy.CurrentHealth.Value);
+                        _health.IncreaseValue(enemy.CurrentHealth.Value);
+                    }
+
+                    _mana.DecreaseValue(_manaPrice);
+                }
             }
             else
             {
-                enemy.TakeDamage(_enemyHealth.Value);
-                _health.IncreaseValue(_enemyHealth.Value);
-            }
+                _isVampire = false;
 
-            _mana.DecreaseValue(_manaPrice);
+                if (_coroutine != null)
+                    StopCoroutine(_coroutine);
+
+                _coroutine = StartCoroutine(ReloadMana());
+            }
 
             yield return _wait;
         }
+    }
 
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+    private int CalculateNearest(Collider2D[] enemies)
+    {
+        float[] distances = new float[enemies.Length];
 
-        _coroutine = StartCoroutine(ReloadMana());
+        for (int i = 0; i < enemies.Length; i++)
+            distances[i] = Vector2.Distance(this.transform.position, enemies[i].transform.position);
+
+        return Array.IndexOf(distances, distances.Min());
     }
 
     private IEnumerator ReloadMana()
