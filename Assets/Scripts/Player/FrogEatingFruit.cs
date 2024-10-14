@@ -8,7 +8,10 @@ public class FrogEatingFruit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Fruit fruit))
+        {
             EatFruit();
+            fruit.EatedObj();
+        }
     }
 
     private void EatFruit() =>

@@ -5,9 +5,9 @@ public class BaseHeroPoints : MonoBehaviour
 {
     [SerializeField] private float _maxValue;
 
-    public float Value { get; protected set; }
-
     public virtual event Action<float> Changed;
+
+    public float Value { get; protected set; }
 
     public float MaxValue => _maxValue;
 

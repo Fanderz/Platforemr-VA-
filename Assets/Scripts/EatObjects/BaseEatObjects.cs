@@ -11,6 +11,9 @@ public class BaseEatObjects : MonoBehaviour
     public virtual void Deactivate() =>
         SetActivity(false);
 
+    public void EatedObj() =>
+        Eated?.Invoke(this);
+
     protected void SetActivity(bool value) =>
         gameObject.SetActive(value);
 }
